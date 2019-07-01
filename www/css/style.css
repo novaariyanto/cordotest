@@ -247,6 +247,9 @@ ul.rating li i{color:#FFCC00}
 .dashboard-panel a:link, .dashboard-panel a:visited{text-decoration: none;}
 .dashboard-panel .row .col-33 p {font-size: 12px;font-weight:500;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}             
             
+/** page form_biografi **/
+#form_biografi .list .item {border: 0;}
+
 /** page slide_tab_menu **/
 
 /** custom css **/

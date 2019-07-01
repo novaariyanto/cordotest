@@ -1,0 +1,34 @@
+	<ion-view view-title=" biografi" hide-nav-bar="false" >
+		<!-- content -->
+		<ion-content delegate-handle="top"   id="page-form_biografi" class="has-header page-form_biografi">
+		
+		<div class="list list"  >
+			<form ng-submit="submitBiografi()">
+
+			<!-- input provinsi -->
+			<label class="item item-input item-select noborder" ng-init="form_biografi.provinsi='provinsi'">
+				<span class="input-label">provinsi</span>
+				<select ng-model="form_biografi.provinsi" name="provinsi" >
+					<option value="provinsi">provinsi</option>
+				</select>
+			</label>
+			<!-- ./input provinsi -->
+
+			<!-- input nama -->
+			<label class="item item-input item-floating-label">
+				<span class="input-label">nama</span>
+				<input type="text" ng-model="form_biografi.nama" name="nama" placeholder="nama" ng-required="true"/>
+			</label>
+			<!-- ./input nama -->
+
+			<!-- input submit -->
+			<div class="item item-button noborder">
+				<button class="button button-assertive ink">submit</button>
+			</div>
+			<!-- ./input submit -->
+			</form>
+		</div>
+		<br/><br/><br/><br/>
+		</ion-content>
+		<!-- ./content -->
+	</ion-view>

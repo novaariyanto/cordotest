@@ -291,6 +291,8 @@ angular.module("cordotest.controllers", [])
 			
 			
 		} catch(e){
+			console.log("%cerror: %cPage: `index` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
 		}
 	}
 	$scope.rating = {};
@@ -363,6 +365,9 @@ angular.module("cordotest.controllers", [])
 	popover_template += "			<a  class=\"item dark-ink\" ng-click=\"showLanguageDialog()\" >";
 	popover_template += "			{{ 'Language' | translate }}";
 	popover_template += "			</a>";
+	popover_template += "			<a  class=\"item dark-ink\" ng-href=\"#/cordotest/form_biografi\" ng-click=\"popover.hide()\">";
+	popover_template += "			{{ 'biografi' | translate }}";
+	popover_template += "			</a>";
 	popover_template += "		</ion-list>";
 	popover_template += "	</ion-content>";
 	popover_template += "</ion-popover-view>";
@@ -391,6 +396,8 @@ angular.module("cordotest.controllers", [])
 			
 			
 		} catch(e){
+			console.log("%cerror: %cPage: `side_menus` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
 		}
 	}
 	$scope.rating = {};
@@ -460,6 +467,8 @@ angular.module("cordotest.controllers", [])
 			
 $ionicConfig.backButton.text("");			
 		} catch(e){
+			console.log("%cerror: %cPage: `about_us` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
 		}
 	}
 	$scope.rating = {};
@@ -529,6 +538,8 @@ $ionicConfig.backButton.text("");
 			
 $ionicConfig.backButton.text("");			
 		} catch(e){
+			console.log("%cerror: %cPage: `dashboard` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
 		}
 	}
 	$scope.rating = {};
@@ -598,6 +609,118 @@ $ionicConfig.backButton.text("");
 			
 $ionicConfig.backButton.text("");			
 		} catch(e){
+			console.log("%cerror: %cPage: `faqs` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
+		}
+	}
+	$scope.rating = {};
+	$scope.rating.max = 5;
+	
+	// animation ink (ionic-material)
+	ionicMaterialInk.displayEffect();
+	controller_by_user();
+})
+
+// TODO: form_biografiCtrl --|-- 
+.controller("form_biografiCtrl", function($ionicConfig,$scope,$rootScope,$state,$location,$ionicScrollDelegate,$ionicListDelegate,$http,$httpParamSerializer,$stateParams,$timeout,$interval,$ionicLoading,$ionicPopup,$ionicPopover,$ionicActionSheet,$ionicSlideBoxDelegate,$ionicHistory,ionicMaterialInk,ionicMaterialMotion,$window,$ionicModal,base64,md5,$document,$sce,$ionicGesture,$translate,tmhDynamicLocale){
+	
+	$rootScope.headerExists = true;
+	$rootScope.ionWidth = $document[0].body.querySelector(".view-container").offsetWidth || 412;
+	$rootScope.grid64 = parseInt($rootScope.ionWidth / 64) ;
+	$rootScope.grid80 = parseInt($rootScope.ionWidth / 80) ;
+	$rootScope.grid128 = parseInt($rootScope.ionWidth / 128) ;
+	$rootScope.grid256 = parseInt($rootScope.ionWidth / 256) ;
+	$rootScope.last_edit = "forms" ;
+	$scope.$on("$ionicView.afterEnter", function (){
+		var page_id = $state.current.name ;
+		$rootScope.page_id = page_id.replace(".","-") ;
+	});
+	if($rootScope.headerShrink == true){
+		$scope.$on("$ionicView.enter", function(){
+			$scope.scrollTop();
+		});
+	};
+	// TODO: form_biografiCtrl --|-- $scope.scrollTop
+	$rootScope.scrollTop = function(){
+		$timeout(function(){
+			$ionicScrollDelegate.$getByHandle("top").scrollTop();
+		},100);
+	};
+	// TODO: form_biografiCtrl --|-- $scope.toggleGroup
+	$scope.toggleGroup = function(group) {
+		if ($scope.isGroupShown(group)) {
+			$scope.shownGroup = null;
+		} else {
+			$scope.shownGroup = group;
+		}
+	};
+	
+	$scope.isGroupShown = function(group) {
+		return $scope.shownGroup === group;
+	};
+	
+	// TODO: form_biografiCtrl --|-- $scope.redirect
+	// redirect
+	$scope.redirect = function($url){
+		$window.location.href = $url;
+	};
+	
+	// Set Motion
+	$timeout(function(){
+		ionicMaterialMotion.slideUp({
+			selector: ".slide-up"
+		});
+	}, 300);
+	
+	// Form Request
+	//biografi
+	$scope.form_biografi= {};
+	// TODO: form_biografiCtrl --|-- $scope.submitBiografi
+	$scope.submitBiografi = function(){
+		// animation loading 
+		$ionicLoading.show();
+	
+		var $messages, $title = null;
+		$http({
+				method:"POST",
+				url: "#",
+				data: $httpParamSerializer($scope.form_biografi),  // pass in data as strings
+				headers: {"Content-Type":"application/x-www-form-urlencoded"}  // set the headers so angular passing info as form data (not request payload)
+			})
+			.then(function(response) {
+				$messages = response.data.message;
+				$title = response.data.title;
+			},function(response){
+				$messages = response.statusText;
+				$title = response.status;
+			}).finally(function(){
+				// event done, hidden animation loading
+				$timeout(function() {
+					$ionicLoading.hide();
+					if($messages !== null){
+						// message
+					var alertPopup = $ionicPopup.alert({
+						title: $title,
+						template: $messages,
+					});
+						// clear input
+						$scope.form_biografi.provinsi = "";
+						$scope.form_biografi.nama = "";
+					}
+			}, 500);
+		});
+	};
+	// code 
+
+	// TODO: form_biografiCtrl --|-- controller_by_user
+	// controller by user 
+	function controller_by_user(){
+		try {
+			
+			
+		} catch(e){
+			console.log("%cerror: %cPage: `form_biografi` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
 		}
 	}
 	$scope.rating = {};
@@ -667,6 +790,8 @@ $ionicConfig.backButton.text("");
 			
 $ionicConfig.backButton.text("");			
 		} catch(e){
+			console.log("%cerror: %cPage: `menu_one` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
 		}
 	}
 	$scope.rating = {};
@@ -736,6 +861,8 @@ $ionicConfig.backButton.text("");
 			
 $ionicConfig.backButton.text("");			
 		} catch(e){
+			console.log("%cerror: %cPage: `menu_two` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
 		}
 	}
 	$scope.rating = {};
@@ -805,6 +932,8 @@ $ionicConfig.backButton.text("");
 			
 $ionicConfig.backButton.text("");			
 		} catch(e){
+			console.log("%cerror: %cPage: `slide_tab_menu` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
 		}
 	}
 	$scope.rating = {};

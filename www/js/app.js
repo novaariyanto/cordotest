@@ -252,6 +252,19 @@ angular.module("cordotest", ["ngCordova","ionic","ionMdInput","ionic-material","
 		}
 	})
 
+	.state("cordotest.form_biografi", {
+		url: "/form_biografi",
+		views: {
+			"cordotest-side_menus" : {
+						templateUrl:"templates/cordotest-form_biografi.html",
+						controller: "form_biografiCtrl"
+					},
+			"fabButtonUp" : {
+						template: '',
+					},
+		}
+	})
+
 	.state("cordotest.menu_one", {
 		url: "/menu_one",
 		views: {
